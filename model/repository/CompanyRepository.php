@@ -8,4 +8,6 @@ interface CompanyRepository {
 
 	public function insertNewCompany($company);
 
+	public function retrieveCompaniesNames();
+
 }

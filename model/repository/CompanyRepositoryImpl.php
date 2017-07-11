@@ -37,4 +37,14 @@ class CompanyRepositoryImpl implements CompanyRepository {
 
 		$this->queryBuilder->insert('companies', $companyArray);
 	}
+
+	public function retrieveCompaniesNames() {
+
+		$companies = $this->queryBuilder->selectAll('companies');
+
+		return array_map(function($company) {
+			return $company->companyName;
+		}, $companies);
+	}
+
 }

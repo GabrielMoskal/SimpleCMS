@@ -19,36 +19,24 @@ class CompanyController {
 	}
 
 	public function showCompany() {
+		return $this->redirectToAddCompanyView();
+	}
+
+	private function redirectToAddCompanyView() {
 		return $this->viewResolver->view('add_company');
 	}
 
 	public function addCompany() {
-		$company = $this->createCompanyTest();
+		$company = $this->companyService->makeCompany();
 		if (isset($_POST['cancel'])) {
-			return $this->viewResolver->view('add_company');
+			return $this->redirectToAddCompanyView();
 		} 
 		else if ($this->companyService->addCompany($company)) {
 			return $this->viewResolver->view('index');
 		} 
 		else {
-			return $this->viewResolver->view('add_company', compact('user'));
+			return $this->redirectToAddCompanyView();
 		};
-	}
-
-	private function createCompany() {
-		$company = new Company();
-		$company->companyName = strip_tags($_POST['companyName']);
-		$company->address = strip_tags($_POST['address']);
-		$company->street = strip_tags($_POST['street']);
-		$company->town = strip_tags($_POST['town']);
-		$company->country = strip_tags($_POST['country']);
-		$company->NIP = strip_tags($_POST['NIP']);
-		$company->email = strip_tags($_POST['email']);
-		$company->trader = strip_tags($_POST['trader']);
-		$company->aggreePersonalData = $_POST['aggreePersonalData'];
-		$company->aggreeCommercials = $_POST['aggreeCommercials'];
-
-		return $company;
 	}
 
 	private function createCompanyTest() {

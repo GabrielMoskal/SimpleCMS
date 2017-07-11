@@ -23,3 +23,4 @@ $router->post('register', 'RegistrationController@processRegistration');
 // ContactController
 $router->get('addContact', 'ContactController@showAddContact');
 $router->post('addContact', 'ContactController@addContact');
+$router->post('testDB', 'ContactController@testDB');

@@ -8,7 +8,7 @@
 			echo '<li id="menuli"><a href="/login">Log in</a></li>';
 		} ?>
 		<li id="menuli"><a href="/register">Create Account</a></li>
-		<li id="menuli"><a href="/addCompany">Company</a></li>
-		<li id="menuli"><a href="/addContact">Contact</a></li>
+		<li id="menuli"><a href="/addCompany">Add Company</a></li>
+		<li id="menuli"><a href="/addContact">Add Contact</a></li>
 	</ul>
 </nav>
