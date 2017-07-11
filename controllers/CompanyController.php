@@ -15,8 +15,7 @@ class CompanyController {
 	public function __construct($viewResolver,
 								$queryBuilder) {
 		$this->viewResolver = $viewResolver;
-		$pdo = $queryBuilder->getPDO();
-		$this->companyService = new CompanyService(new CompanyRepositoryImpl($pdo));
+		$this->companyService = new CompanyService(new CompanyRepositoryImpl($queryBuilder));
 	}
 
 	public function showCompany() {
@@ -59,7 +58,7 @@ class CompanyController {
 		$company->street = 'street';
 		$company->town = 'town';
 		$company->country = 'country';
-		$company->NIP = 1234;
+		$company->NIP = 41234;
 		$company->email = 'email';
 		$company->trader = 'trader';
 		$company->aggreePersonalData = 'true';

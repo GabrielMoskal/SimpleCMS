@@ -30,7 +30,7 @@
   
   <div class="panel panel-default">
     <div class="panel-heading font-bold">
-      <h1>Dane firmy</h1>
+      <h1>Dane klienta</h1>
     </div>
     <div class="panel-body">
       <form class="form-horizontal" method="POST" action="/addCompany">

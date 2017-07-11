@@ -4,10 +4,12 @@ namespace App\Model\Repository;
 
 class CompanyRepositoryImpl implements CompanyRepository {
 
+	private $queryBuilder;
 	private $pdo;
 
-	public function __construct($pdo) {
-		$this->pdo = $pdo;
+	public function __construct($queryBuilder) {
+		$this->queryBuilder = $queryBuilder;
+		$this->pdo = $queryBuilder->getPDO();
 	}
 
 	// returns true if Company with given NIP exists in container, returns false otherwise 
@@ -33,19 +35,6 @@ class CompanyRepositoryImpl implements CompanyRepository {
 	public function insertNewCompany($company) {
 		$companyArray = get_object_vars($company);
 
-		$queryString = sprintf (
-			'insert into %s (%s) values (%s);',
-			'companies',
-			implode(', ', array_keys($companyArray)),
-			':' . implode(', :', array_keys($companyArray))
-		);
-
-		try {
-			$stmt = $this->pdo->prepare($queryString);
-			$stmt->execute($companyArray);
-		} catch(PDOException $e) {
-			die($e->getMessage());
-		}	
-
+		$this->queryBuilder->insert('companies', $companyArray);
 	}
 }
