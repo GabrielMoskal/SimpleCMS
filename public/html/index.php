@@ -6,8 +6,8 @@
 
 	<?php 
 		if (isset($_SESSION['user'])) {
-			$email = $_SESSION['user']->getEmail();
-			echo "Hello " . substr($email, 0, strpos($email, '@')); 
+			
+			echo "Hello " . $_SESSION['user']->getUsername(); 
 		}
 	?>
 

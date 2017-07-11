@@ -4,8 +4,8 @@ $router->get('', 'PagesController@home');
 $router->get('about', 'PagesController@about');
 $router->get('contact', 'PagesController@contact');
 $router->post('names', 'controllers/add-name.php');
-$router->get('users', 'UsersController@index');
-$router->post('users', 'UsersController@store');
+
+// CompanyController
 $router->get('addCompany', 'CompanyController@showCompany');
 $router->post('addCompany', 'CompanyController@addCompany');
 
@@ -19,3 +19,7 @@ $router->get('logout', 'LoginController@logout');
 // RegistrationController
 $router->get('register', 'RegistrationController@showRegistration');
 $router->post('register', 'RegistrationController@processRegistration');
+
+// ContactController
+$router->get('addContact', 'ContactController@showAddContact');
+$router->post('addContact', 'ContactController@addContact');

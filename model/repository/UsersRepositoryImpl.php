@@ -85,8 +85,6 @@ class UsersRepositoryImpl implements UsersRepository {
 		} catch(PDOException $e) {
 			die($e->getMessage());
 		}	
-
 	}
-
-
+	
 }

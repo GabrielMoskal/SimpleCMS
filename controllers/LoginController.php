@@ -33,7 +33,7 @@ class LoginController {
 		$user = $this->createUser();	
 
 		if ($this->loginService->login($user)) {
-			return $this->viewResolver->view('add_company');
+			return $this->viewResolver->view('index');
 		} else {
 			return $this->viewResolver->view('page_signin', compact('user'));
 		};

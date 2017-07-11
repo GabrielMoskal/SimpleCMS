@@ -8,6 +8,7 @@ class ComposerStaticInite84b1596007af5ceb56786cf55a3e8a9
 {
     public static $classMap = array (
         'App\\Controllers\\CompanyController' => __DIR__ . '/../..' . '/controllers/CompanyController.php',
+        'App\\Controllers\\ContactController' => __DIR__ . '/../..' . '/controllers/ContactController.php',
         'App\\Controllers\\LoginController' => __DIR__ . '/../..' . '/controllers/LoginController.php',
         'App\\Controllers\\PagesController' => __DIR__ . '/../..' . '/controllers/PagesController.php',
         'App\\Controllers\\RegistrationController' => __DIR__ . '/../..' . '/controllers/RegistrationController.php',
@@ -17,8 +18,12 @@ class ComposerStaticInite84b1596007af5ceb56786cf55a3e8a9
         'App\\Core\\ViewResolver' => __DIR__ . '/../..' . '/core/ViewResolver.php',
         'App\\Model\\Dto\\Company' => __DIR__ . '/../..' . '/model/dto/Company.php',
         'App\\Model\\Dto\\User' => __DIR__ . '/../..' . '/model/dto/User.php',
+        'App\\Model\\Repository\\CompanyRepository' => __DIR__ . '/../..' . '/model/repository/CompanyRepository.php',
+        'App\\Model\\Repository\\CompanyRepositoryImpl' => __DIR__ . '/../..' . '/model/repository/CompanyRepositoryImpl.php',
         'App\\Model\\Repository\\UsersRepository' => __DIR__ . '/../..' . '/model/repository/UsersRepository.php',
         'App\\Model\\Repository\\UsersRepositoryImpl' => __DIR__ . '/../..' . '/model/repository/UsersRepositoryImpl.php',
+        'App\\Model\\Service\\CompanyService' => __DIR__ . '/../..' . '/model/service/CompanyService.php',
+        'App\\Model\\Service\\CompanyValidator' => __DIR__ . '/../..' . '/model/service/CompanyValidator.php',
         'App\\Model\\Service\\LoginService' => __DIR__ . '/../..' . '/model/service/LoginService.php',
         'App\\Model\\Service\\RegistrationService' => __DIR__ . '/../..' . '/model/service/RegistrationService.php',
         'App\\Model\\Service\\UserValidator' => __DIR__ . '/../..' . '/model/service/UserValidator.php',

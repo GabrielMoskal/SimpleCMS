@@ -23,7 +23,7 @@ class User {
 	}
 
 	public function getEmail() {
-		return (string)$this->email;
+		return $this->email;
 	}
 
 	public function setEmail(string $email) {

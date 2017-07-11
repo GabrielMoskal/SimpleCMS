@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Controllers\\CompanyController' => $baseDir . '/controllers/CompanyController.php',
+    'App\\Controllers\\ContactController' => $baseDir . '/controllers/ContactController.php',
     'App\\Controllers\\LoginController' => $baseDir . '/controllers/LoginController.php',
     'App\\Controllers\\PagesController' => $baseDir . '/controllers/PagesController.php',
     'App\\Controllers\\RegistrationController' => $baseDir . '/controllers/RegistrationController.php',
@@ -16,8 +17,12 @@ return array(
     'App\\Core\\ViewResolver' => $baseDir . '/core/ViewResolver.php',
     'App\\Model\\Dto\\Company' => $baseDir . '/model/dto/Company.php',
     'App\\Model\\Dto\\User' => $baseDir . '/model/dto/User.php',
+    'App\\Model\\Repository\\CompanyRepository' => $baseDir . '/model/repository/CompanyRepository.php',
+    'App\\Model\\Repository\\CompanyRepositoryImpl' => $baseDir . '/model/repository/CompanyRepositoryImpl.php',
     'App\\Model\\Repository\\UsersRepository' => $baseDir . '/model/repository/UsersRepository.php',
     'App\\Model\\Repository\\UsersRepositoryImpl' => $baseDir . '/model/repository/UsersRepositoryImpl.php',
+    'App\\Model\\Service\\CompanyService' => $baseDir . '/model/service/CompanyService.php',
+    'App\\Model\\Service\\CompanyValidator' => $baseDir . '/model/service/CompanyValidator.php',
     'App\\Model\\Service\\LoginService' => $baseDir . '/model/service/LoginService.php',
     'App\\Model\\Service\\RegistrationService' => $baseDir . '/model/service/RegistrationService.php',
     'App\\Model\\Service\\UserValidator' => $baseDir . '/model/service/UserValidator.php',

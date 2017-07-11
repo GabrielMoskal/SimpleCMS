@@ -14,7 +14,7 @@ class UserValidator {
 		return $emailValid && $passwordValid;
 	}
 
-	public function isEmailValid(string $email) {
+	private function isEmailValid(string $email) {
 		if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			return true;
 		} else {
@@ -22,7 +22,7 @@ class UserValidator {
 		}
 	}
 
-	public function isPasswordValid(string $password) {
+	private function isPasswordValid(string $password) {
 		$passwordSet = isset($password);
 		$passwordEmpty = $password === '';
 

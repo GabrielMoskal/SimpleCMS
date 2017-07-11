@@ -4,19 +4,19 @@ namespace App\Model\Dto;
 
 class Company {
 
-	private companyName;
-	private address;
-	private street;
-	private town;
-	private country;
-	private NIP;
-	private email;
-	private trader; // BOOLEAN or constants
-	private aggreePersonalData;
-	private aggreeCommercials;
--
-	public function setCompanyNam($companyName) {
-		$this+>companyName = $companyName;
+	public $companyName;
+	public $address;
+	public $street;
+	public $town;
+	public $country;
+	public $NIP;
+	public $email;
+	public $trader;
+	public $aggreePersonalData;
+	public $aggreeCommercials;
+
+	public function setCompanyName($companyName) {
+		$this->companyName = $companyName;
 	}
 
 	public function getCompanyName() {
@@ -31,7 +31,7 @@ class Company {
 		return $this->address;
 	}
 
-	public function setCompanyNam($street) {
+	public function setStreet($street) {
 		$this->street = $street;
 	}
 
@@ -78,7 +78,7 @@ class Company {
 		return $this->trader;
 	}
 
-	public function setaAgreePersonalData($aggreePersonalData) {
+	public function setAggreePersonalData($aggreePersonalData) {
 		$this->aggreePersonalData = $aggreePersonalData;
 	}
 
@@ -89,8 +89,8 @@ class Company {
 	public function setAggreeCommercials($aggreeCommercials) {
 		$this->aggreeCommercials = $aggreeCommercials;
 	}
-
 	public function getAggreeCommercials() {
 		return $this->aggreeCommercials;
 	}
+
 }

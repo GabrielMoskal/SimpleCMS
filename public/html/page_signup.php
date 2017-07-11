@@ -10,11 +10,14 @@
   <link rel="stylesheet" href="../public/libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="../public/libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
 
-  <link rel="stylesheet" href="css/font.css" type="text/css" />
-  <link rel="stylesheet" href="css/app.css" type="text/css" />
+  <link rel="stylesheet" href="../public/html/css/font.css" type="text/css" />
+  <link rel="stylesheet" href="../public/html/css/app.css" type="text/css" />
 
 </head>
 <body>
+
+<?php require('partials/nav.php'); ?>
+
 <div class="app app-header-fixed ">
   
 
@@ -62,12 +65,12 @@
 
 <script src="../public/libs/jquery/jquery/dist/jquery.js"></script>
 <script src="../public/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-<script src="js/ui-load.js"></script>
-<script src="js/ui-jp.config.js"></script>
-<script src="js/ui-jp.js"></script>
-<script src="js/ui-nav.js"></script>
-<script src="js/ui-toggle.js"></script>
-<script src="js/ui-client.js"></script>
+<script src="../public/html/js/ui-load.js"></script>
+<script src="../public/html/js/ui-jp.config.js"></script>
+<script src="../public/html/js/ui-jp.js"></script>
+<script src="../public/html/js/ui-nav.js"></script>
+<script src="../public/html/js/ui-toggle.js"></script>
+<script src="../public/html/js/ui-client.js"></script>
 
 </body>
 </html>
