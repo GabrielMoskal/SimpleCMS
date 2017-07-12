@@ -25,8 +25,47 @@ class ContactService {
 		$contact->aggreePersonalData = $_POST['aggreePersonalData'];
 		$contact->aggreeCommercials = $_POST['aggreeCommercials'];
 		$contact->trader = $_POST['trader'];
+		$contact->picture = $this->makePicture();
 
 		return $contact;
+	}
+
+	private function makePicture() {
+		$imgFileName = $_FILES['userImage']['name'];
+		$tmpDir = $_FILES['userImage']['tmp_name'];
+		$imgSize = $_FILES['userImage']['size'];
+
+		if (empty($imgFileName)) {
+			return 	NULL;
+		}
+		$uploadDir = 'user_images/'; // upload directory
+		$imgExtension = $this->retrieveImageExtension($imgFileName);
+
+		if ($this->isValidExtension($imgExtension) &&
+			$this->isValidImageSize($imgSize)) {
+
+			$imgName = $this->makePictureName($imgExtension);
+			move_uploaded_file($tmpDir, $uploadDir . $imgName);
+			return $imgName;
+		};
+	}
+
+	private function retrieveImageExtension($imgFileName) {
+		return strtolower(pathinfo($imgFileName, PATHINFO_EXTENSION));
+	}
+
+	private function isValidExtension($imgExtension) {
+		$validExtensions = array('jpeg', 'jpg', 'png', 'gif');
+		return in_array($imgExtension, $validExtensions);
+	}
+
+	private function isValidImageSize($imgSize) {
+		// Check file size '5MB'
+		return $imgSize < 5000000;
+	}
+
+	private function makePictureName($imgExtension) {
+		return rand(1000,1000000) . "." . $imgExtension;
 	}
 
 	public function addContact($contact) {

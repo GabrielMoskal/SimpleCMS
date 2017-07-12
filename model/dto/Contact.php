@@ -12,5 +12,6 @@ class Contact {
 	public $aggreePersonalData;
 	public $aggreeCommercials;
 	public $trader;
+	public $picture;
 
 }

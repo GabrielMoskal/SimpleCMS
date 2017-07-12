@@ -28,12 +28,11 @@
 	    
 <div class="wrapper-md" ng-controller="FormDemoCtrl">
   <div class="panel panel-default">
-  <form method="post" enctype="multipart/form-data" class="form-horizontal" action="/testDB">
     <div class="panel-heading font-bold">
       <h1>Dane klienta</h1>
     </div>
     <div class="panel-body">
-      <form class="form-horizontal" method="POST" action="/addContact">
+      <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="/addContact">
         <div class="form-group">
           <label class="col-sm-2 control-label">Nazwa firmy</label>
           <div class="col-sm-10">
@@ -93,7 +92,7 @@
           <label class="col-sm-2 control-label"></label>
           <div class="col-sm-10">
             <label class="checkbox-inline">
-              <input type="checkbox" value="true" name="aggreePersonalData" ng-model="agree" required> Zgoda na przedawatanie danych osobowych
+              <input type="checkbox" value="true" name="aggreePersonalData" ng-model="agree" required> Zgoda na przetwarzanie danych osobowych
             </label>
             <label class="checkbox-inline">
               <input type="checkbox" value="true" name="aggreeCommercials" ng-model="agree" required> Zgoda na otrzymywanie materiałów reklamowych

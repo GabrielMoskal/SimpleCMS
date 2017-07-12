@@ -14,7 +14,8 @@ class ContactValidator {
 			$this->isStringEmpty($contact->job) ||
 			$this->isStringEmpty($contact->phoneNumber) ||
 			$this->isStringEmpty($contact->email) ||
-			$this->isStringEmpty($contact->trader)) {
+			$this->isStringEmpty($contact->trader) ||
+			(! isset($contact->picture))) {
 
 			return false;
 		}
