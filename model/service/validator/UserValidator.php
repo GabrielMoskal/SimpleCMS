@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Model\Service;
+namespace App\Model\Service\Validator;
 
 class UserValidator {
 
+	/**
+	Validates email and password given in an User object.
+	*/
 	public function areDetailsValid($user) {
 		$email = $user->getEmail();
 		$emailValid = $this->isEmailValid($email);

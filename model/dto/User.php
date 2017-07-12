@@ -2,6 +2,9 @@
 
 namespace App\Model\Dto;
 
+/**
+Data transfer object, represents User in database
+*/
 class User {
 	
 	private $username;

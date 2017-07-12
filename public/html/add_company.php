@@ -107,10 +107,10 @@
           <label class="col-sm-2 control-label"></label>
           <div class="col-sm-10">
             <label class="checkbox-inline">
-              <input type="checkbox" value="true" name="aggreePersonalData" ng-model="agree" required> Zgoda na przetwarzanie danych osobowych
+              <input type="checkbox" value="true" name="aggreePersonalData" ng-model="agree"> Zgoda na przetwarzanie danych osobowych
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" value="true" name="aggreeCommercials" ng-model="agree" required> Zgoda na otrzymywanie materiałów reklamowych
+              <input type="checkbox" value="true" name="aggreeCommercials" ng-model="agree"> Zgoda na otrzymywanie materiałów reklamowych
             </label>
           </div>
         </div>

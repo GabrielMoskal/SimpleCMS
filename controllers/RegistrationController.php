@@ -12,11 +12,13 @@ class RegistrationController {
 	private $viewResolver;
 	private $registrationService;
 
+	/**
+	 takes instance of ViewResolver and QueryBuilder 
+	*/
 	public function __construct($viewResolver,
 								$queryBuilder) {
 		$this->viewResolver = $viewResolver;
-		$pdo = $queryBuilder->getPDO();
-		$this->registrationService = new RegistrationService(new UsersRepositoryImpl($pdo));
+		$this->registrationService = new RegistrationService(new UsersRepositoryImpl($queryBuilder));
 	}
 
 	// shows view responsible for registration
@@ -34,6 +36,9 @@ class RegistrationController {
 		};
 	}
 
+	/**
+	 creates a new User object, takes details from POST method
+	*/
 	private function createUser() {
 		$email = $_POST['email'];
 		$password = $_POST['password'];

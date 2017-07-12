@@ -12,12 +12,18 @@ class CompanyController {
 	private $viewResolver;
 	private $companyService;
 
+	/**
+	 takes instance of ViewResolver and QueryBuilder 
+	*/
 	public function __construct($viewResolver,
 								$queryBuilder) {
 		$this->viewResolver = $viewResolver;
 		$this->companyService = new CompanyService(new CompanyRepositoryImpl($queryBuilder));
 	}
 
+	/**
+	 redirects to add_company view
+	*/
 	public function showCompany() {
 		return $this->redirectToAddCompanyView();
 	}
@@ -26,12 +32,15 @@ class CompanyController {
 		return $this->viewResolver->view('add_company');
 	}
 
+	/**
+	 Attempts to insert Company into database.
+	 Retrieves Company object from $_POST method.
+	 Returns user to main page on success, on failure to the add_company view page
+	*/
 	public function addCompany() {
 		$company = $this->companyService->makeCompany();
-		if (isset($_POST['cancel'])) {
-			return $this->redirectToAddCompanyView();
-		} 
-		else if ($this->companyService->addCompany($company)) {
+
+		if ($this->companyService->addCompany($company)) {
 			return $this->viewResolver->view('index');
 		} 
 		else {

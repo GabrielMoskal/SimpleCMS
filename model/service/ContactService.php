@@ -2,34 +2,53 @@
 
 namespace App\Model\Service;
 
+use App\Model\Service\Validator\{DataValidator, FormValidator};
 use App\Model\Dto\Contact;
 
 class ContactService {
 
 	private $contactRepository;
 	private $contact = NULL;
-	private $contactValidator;
+	private $formValidator;
+	private $dataValidator;
 
+	/**
+	Takes ContactRepository instance as argument, and creates
+	FormValidator and DataValidator to validate given data.
+	*/
 	public function __construct($contactRepository) {
 		$this->contactRepository = $contactRepository;
-		$this->contactValidator = new ContactValidator();
+		$this->formValidator = new FormValidator();
+		$this->dataValidator = new DataValidator();
 	}
 
+	/**
+	Makes a new Contact object from $_POST method.
+	*/
 	public function makeContact() {
 		$contact = new Contact();
-		$contact->companyName = $_POST['companyName'];
-		$contact->clientName = $_POST['clientName'];
-		$contact->job = $_POST['job'];
-		$contact->phoneNumber = $_POST['phoneNumber'];
-		$contact->email = $_POST['email'];
-		$contact->aggreePersonalData = $_POST['aggreePersonalData'];
-		$contact->aggreeCommercials = $_POST['aggreeCommercials'];
-		$contact->trader = $_POST['trader'];
+		$contact->companyName = strip_tags($_POST['companyName']);
+		$contact->clientName = strip_tags($_POST['clientName']);
+		$contact->job = strip_tags($_POST['job']);
+		$contact->phoneNumber = strip_tags($_POST['phoneNumber']);
+		$contact->email = strip_tags($_POST['email']);
+		$contact->aggreePersonalData = strip_tags($_POST['aggreePersonalData']);
+		$contact->aggreeCommercials = strip_tags($_POST['aggreeCommercials']);
+		$contact->trader = strip_tags($_POST['trader']);
+
+		// Assigns submitted picture name to a Contact object.
 		$contact->picture = $this->makePicture();
 
 		return $contact;
 	}
 
+	/**
+	Retrieves file informations from $_FILES['userImage'] data.
+	Puts summited picture into 'user_images' directory.
+	Returns added image name on success, otherwise returns NULL.
+	Name is generated number from range between 1000 and 1000000
+	and original picture extension.
+	*/
 	private function makePicture() {
 		$imgFileName = $_FILES['userImage']['name'];
 		$tmpDir = $_FILES['userImage']['tmp_name'];
@@ -68,6 +87,10 @@ class ContactService {
 		return rand(1000,1000000) . "." . $imgExtension;
 	}
 
+	/**
+	If can process adding $contact object into database does it,
+	and returns true, otherwise returns false.
+	*/
 	public function addContact($contact) {
 		$this->contact = $contact;
 
@@ -79,22 +102,21 @@ class ContactService {
 		}
 	}
 
+	/**
+	Checks if form and details given are valid, and if company not exists.
+	If so, return true, otherwise false.
+	*/
 	private function canProcessAddContact() {
-		$contractsAgreed = $this->areContractsAgreed();
-		$detailsValid = $this->contactValidator->areDetailsValid($this->contact);
+		$formValid = $this->formValidator->isFormDataValid();
+		$detailsValid = $this->dataValidator->areDetailsSet($this->contact);
 		$contactExists = $this->contactRepository->contactExists($this->contact);
 
-		return $contractsAgreed && $detailsValid && (! $contactExists);
+		return $formValid && $detailsValid && (! $contactExists);
 	}
 
-	private function areContractsAgreed() {
-		if (($_POST['aggreePersonalData'] === 'true') &&
-			($_POST['aggreeCommercials'] === 'true')) {
-			return true;
-		}
-		return false;
-	}
-
+	/**
+	Inserts a new company into database using CompanyRepository.
+	*/
 	private function processAddContact() {
 		$this->contactRepository->insertNewContact($this->contact);
 	}

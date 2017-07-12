@@ -12,7 +12,9 @@ class CompanyRepositoryImpl implements CompanyRepository {
 		$this->pdo = $queryBuilder->getPDO();
 	}
 
-	// returns true if Company with given NIP exists in container, returns false otherwise 
+	/**
+	returns true if Company with given NIP exists in database, returns false otherwise 
+	*/
 	public function companyExists($NIP) {
 		$queryString = "SELECT COUNT(*) FROM companies 
 						WHERE NIP='{$NIP}';";
@@ -21,7 +23,9 @@ class CompanyRepositoryImpl implements CompanyRepository {
 		return (int)$numberOfRows != 0;
 	}
 
-	// returns first column of result of PDOStatement::fetchColumn()
+	/**
+	returns first column of result of PDOStatement::fetchColumn() 
+	*/
 	private function query(string $queryString) {
 		try {
 			$result = $this->pdo->prepare($queryString); 
@@ -32,12 +36,18 @@ class CompanyRepositoryImpl implements CompanyRepository {
 		}
 	}
 
+	/**
+	Inserts Company object into database;
+	*/
 	public function insertNewCompany($company) {
 		$companyArray = get_object_vars($company);
 
 		$this->queryBuilder->insert('companies', $companyArray);
 	}
 
+	/**
+	Retrieves array of all Company names from database.
+	*/
 	public function retrieveCompaniesNames() {
 
 		$companies = $this->queryBuilder->selectAll('companies');

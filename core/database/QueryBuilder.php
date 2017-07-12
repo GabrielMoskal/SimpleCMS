@@ -30,12 +30,6 @@ class QueryBuilder {
 		} catch(PDOException $e) {
 			die('Whoops, something went wrong');
 		}
-
-		/*
-		array_map(function($param) {
-			return ":{$param}";
-		}, array_keys($parameters));
-		*/
 	}
 
 	public function getPDO() {

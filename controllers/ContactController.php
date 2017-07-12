@@ -15,17 +15,18 @@ class ContactController {
 	private $contactService;
 	private $companyService;
 
-	private $testPDO;
-
+	/* takes instance of ViewResolver and QueryBuilder */
 	public function __construct($viewResolver,
 								$queryBuilder) {
 		$this->viewResolver = $viewResolver;
 		$this->contactService = new ContactService(new ContactRepositoryImpl($queryBuilder));
 		$this->companyService = new CompanyService(new CompanyRepositoryImpl($queryBuilder));
-
-		$this->testPDO = $queryBuilder->getPDO();
 	}
 
+	/**
+	 Redirects to add_contact view.
+	 View retrieves array with names of all registered companies in database.
+	*/
 	public function showAddContact() {
 		return $this->redirectToAddContactView();
 	}
@@ -35,12 +36,15 @@ class ContactController {
 		return $this->viewResolver->view('add_contact', compact('companiesNames'));
 	}
 
+	/**
+	 Attempts to insert Contact into database.
+	 Retrieves Contact object from $_POST method.
+	 Returns user to main page on success, on failure to the add_contact view page
+	*/
 	public function addContact() {
 		$contact = $this->contactService->makeContact();
-		if (isset($_POST['cancel'])) {
-			return $this->redirectToAddContactView();
-		} 
-		else if ($this->contactService->addContact($contact)) {
+
+		if ($this->contactService->addContact($contact)) {
 			return $this->viewResolver->view('index');
 		} 
 		else {

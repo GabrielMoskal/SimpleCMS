@@ -7,11 +7,18 @@ class ContactRepositoryImpl implements ContactRepository {
 	private $queryBuilder;
 	private $pdo;
 
+	/**
+	Takes QueryBuilder objectct.
+	*/
 	public function __construct($queryBuilder) {
 		$this->queryBuilder = $queryBuilder;
 		$this->pdo = $queryBuilder->getPDO();
 	}
 
+	/**
+		Returns true if Contact exists in database having 
+		the same email address like $contact->email.
+	*/
 	public function contactExists($contact) {
 		$email = $contact->email;
 		$queryString = "SELECT COUNT(*) FROM contacts 
@@ -21,6 +28,9 @@ class ContactRepositoryImpl implements ContactRepository {
 		return (int)$numberOfRows != 0;
 	}
 
+	/**
+		Executes query, returning first column of a result.
+	*/
 	private function query(string $queryString) {
 		try {
 			$result = $this->pdo->prepare($queryString); 
@@ -31,6 +41,9 @@ class ContactRepositoryImpl implements ContactRepository {
 		}
 	}
 
+	/**
+		Inserts Contact object into database.
+	*/
 	public function insertNewContact($contact) {
 		$contactArray = get_object_vars($contact);
 

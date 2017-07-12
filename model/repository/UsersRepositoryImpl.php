@@ -7,13 +7,17 @@ use App\Core\App;
 
 class UsersRepositoryImpl implements UsersRepository {
 
+	private $queryBuilder;
 	private $pdo;
 
-	public function __construct($pdo) {
-		$this->pdo = $pdo;
+	public function __construct($queryBuilder) {
+		$this->queryBuilder = $queryBuilder;
+		$this->pdo = $queryBuilder->getPDO();
 	}
 
-	// returns true if User with given email exists in container, returns false otherwise 
+	/**
+	 Returns true if User with given email exists in container, returns false otherwise 
+	*/
 	public function userExists(string $email) {
 		$queryString = "SELECT COUNT(*) FROM users 
 				  WHERE email='{$email}';";
@@ -22,7 +26,9 @@ class UsersRepositoryImpl implements UsersRepository {
 		return (int)$numberOfRows != 0;
 	}
 
-	// returns first columnt of result of PDOStatement::fetchColumn()
+	/**
+	 returns first columnt of result of PDOStatement::fetchColumn()
+	*/
 	private function query(string $queryString) {
 		try {
 			$result = $this->pdo->prepare($queryString); 
@@ -33,7 +39,9 @@ class UsersRepositoryImpl implements UsersRepository {
 		}
 	}
 
-	/* returns true if $user email and password members are the same like in database */
+	/** 
+	Returns true if $user->email and $user->password members are the same like in database 
+	*/
 	public function validateUser($user) {
 		$email = $user->getEmail();
 		$password = $user->getPassword();
@@ -44,7 +52,9 @@ class UsersRepositoryImpl implements UsersRepository {
 		return (int)$numberOfRows != 0;
 	}
 
-	/* returns User object from database for user with given email, user must exist in database */
+	/** 
+	Returns User object from database for user with given email, user must exist in database.
+	*/
 	public function getUser(string $email) {
 		$queryString = "SELECT * 
 						FROM users 
@@ -67,24 +77,12 @@ class UsersRepositoryImpl implements UsersRepository {
 		return new User($userArray[0]['email'], $userArray[0]['password'], $userArray[0]['username']);
 	}
 
+	/**
+	Inserts $user into database, 'users' table.
+	*/
 	public function insertNewUser($user) {
-		$password = $user->getPassword();
-		$email = $user->getEmail();
-		$username = $user->getUsername();
-
-		$queryString = "INSERT INTO users(email, password, username) 
-						VALUES (:email, :password, :username);"; 
-
-		try {
-			$stmt = $this->pdo->prepare($queryString);
-			$stmt->bindParam(':email', $email);
-			$stmt->bindParam(':password', $password);
-			$stmt->bindParam(':username', $username);
-			// insert one row
-			$stmt->execute();
-		} catch(PDOException $e) {
-			die($e->getMessage());
-		}	
+		$contactArray = get_object_vars($user);
+		$this->queryBuilder->insert('users', $contactArray);
 	}
 	
 }

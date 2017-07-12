@@ -2,23 +2,36 @@
 
 namespace App\Model\Service;
 
+use App\Model\Service\Validator\{DataValidator, FormValidator};
 use App\Model\Dto\Company;
 
 class CompanyService {
 
 	private $companyRepository;
-	private $company = NULL;
-	private $companyValidator;
+	private $company = NULL; // TODO
+	private $formValidator;
+	private $dataValidator;
 
+	/**
+	Takes CompanyRepository instance as argument, and creates
+	FormValidator and DataValidator to validate given data.
+	*/
 	public function __construct($companyRepository) {
 		$this->companyRepository = $companyRepository;
-		$this->companyValidator = new CompanyValidator();
+		$this->formValidator = new FormValidator();
+		$this->dataValidator = new DataValidator();
 	}
 
+	/**
+	Returns array of all companies names.
+	*/
 	public function retrieveCompaniesNames() {
 		return $this->companyRepository->retrieveCompaniesNames();
 	}
 
+	/**
+	Makes a new Company object from $_POST method.
+	*/
 	public function makeCompany() {
 		$company = new Company();
 		$company->companyName = strip_tags($_POST['companyName']);
@@ -35,6 +48,10 @@ class CompanyService {
 		return $company;
 	}
 
+	/**
+	If can process adding $company object into database does it,
+	and returns true, otherwise returns false.
+	*/
 	public function addCompany($company) {
 		$this->company = $company;
 		if ($this->canProcessAddCompany()) {
@@ -45,24 +62,22 @@ class CompanyService {
 		}
 	}
 
+	/**
+	Checks if form and details given are valid, and if company not exists.
+	If so, return true, otherwise false.
+	*/
 	private function canProcessAddCompany() {
-		$contractsAgreed = $this->areContractsAgreed();
-		$detailsValid = $this->companyValidator->areDetailsValid($this->company);
+		$formValid = $this->formValidator->isFormDataValid();
+		$detailsValid = $this->dataValidator->areDetailsSet($this->company);
 		$companyExists = $this->companyRepository->companyExists($this->company->NIP);
 
-		return $contractsAgreed && $detailsValid && (! $companyExists);
+		return $formValid && $detailsValid && (! $companyExists);
 	}
 
-	private function areContractsAgreed() {
-		if (($_POST['aggreePersonalData'] === 'true') &&
-			($_POST['aggreeCommercials'] === 'true')) {
-			return true;
-		}
-		return false;
-	}
-
+	/**
+	Inserts a new company into database using CompanyRepository.
+	*/
 	private function processAddCompany() {
 		$this->companyRepository->insertNewCompany($this->company);
 	}
-
 }

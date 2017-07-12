@@ -2,6 +2,9 @@
 
 namespace App\Model\Dto;
 
+/**
+Data transfer object, represents Contact in database
+*/
 class Contact {
 
 	public $companyName;
