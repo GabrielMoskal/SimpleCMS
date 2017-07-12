@@ -2,7 +2,7 @@
 
 namespace App\Model\Service;
 
-use App\Model\Service\Validator\UserValidator;
+use App\Model\Service\Validator\{DataValidator, UserValidator};
 
 /* Class responsible for Logging User  */
 
@@ -10,10 +10,12 @@ class LoginService {
 
 	private $usersRepository;
 	private $user = NULL;
+	private $dataValidator;
 	private $userValidator;
 
 	public function __construct($usersRepository) {
 		$this->usersRepository = $usersRepository;
+		$this->dataValidator = new DataValidator();
 		$this->userValidator = new UserValidator();
 	}
 
@@ -26,17 +28,19 @@ class LoginService {
 	*/
 	public function login($user) {
 		$this->user = $user; 
-
-		if ($this->userValidator->areDetailsValid($user) && $this->validateUser()) {
+		if ($this->canProcessLogging()) {
 			$this->processLogging();		
-			return true;	
+			return true;
 		} else {
 			return false;
 		}
 	}
 
-	private function validateUser() {
-		return $this->usersRepository->validateUser($this->user);
+	private function canProcessLogging() {
+		$passwordValid = $this->userValidator->isPasswordValid($this->user->password);
+		$detailsValid = $this->usersRepository->validateUser($this->user);
+
+		return $passwordValid && $detailsValid;
 	}
 
 	/**
@@ -53,7 +57,7 @@ class LoginService {
 	Only email and password are submitted, so the rest of User object is filled from database 
 	*/
 	private function fillUserWithDetails() {
-		$email = $this->user->getEmail();
+		$email = $this->user->email;
 		$this->user = $this->usersRepository->getUser($email);
 	}
 
@@ -70,4 +74,40 @@ class LoginService {
 		unset($_SESSION['email']);
 		session_destroy();
 	}
+
+	public function resetPassword($email) {
+		$email = strip_tags($email);
+
+		if ($this->canProcessResetPassword($email)) {
+			$this->processResetPassword($email);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	private function canProcessResetPassword($email) {
+		$emailSet = isset($email) || $email !== '';
+		$emailValid = $this->dataValidator->isEmailValid($email);
+		$userExists = $this->usersRepository->userExists($email);
+
+		return $emailSet && $emailValid && $userExists;
+	}
+
+	private function processResetPassword($email) {
+		$password = $this->generateNewPassword();
+		$this->usersRepository->setPassword($email, $password);
+		$this->sendEmailAboutPasswordReset($email, $password);
+	}
+
+	private function generateNewPassword() {
+		return 'new_' . (string)rand(1000,1000000);
+	}
+
+	private function sendEmailAboutPasswordReset($email, $newPassword) {
+		$message = "Password has been reset.\n\nNew password is: {$newPassword}";
+		mail($email, "Reset password", $message);
+	}
+
 } 

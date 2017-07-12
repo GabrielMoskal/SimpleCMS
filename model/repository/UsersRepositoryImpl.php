@@ -43,8 +43,8 @@ class UsersRepositoryImpl implements UsersRepository {
 	Returns true if $user->email and $user->password members are the same like in database 
 	*/
 	public function validateUser($user) {
-		$email = $user->getEmail();
-		$password = $user->getPassword();
+		$email = $user->email;
+		$password = $user->password;
 		$queryString = "SELECT COUNT(*) FROM users 
 				  WHERE email='{$email}' AND password='{$password}';";
 
@@ -85,5 +85,15 @@ class UsersRepositoryImpl implements UsersRepository {
 		var_dump($user)	;
 		$this->queryBuilder->insert('users', $contactArray);
 	}
-	
+
+	/**
+	Updates password of user with given $email in database.
+	*/
+	public function setPassword($email, $password) {
+		$queryString = "UPDATE users 
+						SET password = '{$password}'  						
+						WHERE email='{$email}';";
+
+		$this->query($queryString);
+	}
 }

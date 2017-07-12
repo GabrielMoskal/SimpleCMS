@@ -3,7 +3,7 @@
 <?php require('partials/nav.php'); ?>
 
  <!-- content -->
-  <div id="content" class="app-footercontent" role="main">
+  <div id="content" class="app-content" role="main">
   <div class="app-content-body app-content-full">
               <div class="app app-header-fixed ">
   <!-- content -->
@@ -44,7 +44,7 @@
         <div class="form-group">
           <label class="col-sm-2 control-label">Kraj</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control rounded" name="country">                        
+            <input type="text" class="form-control rounded" name="country">                      
           </div>
         </div>
         <div class="form-group">
@@ -88,10 +88,10 @@
           <label class="col-sm-2 control-label"></label>
           <div class="col-sm-10">
             <label class="checkbox-inline">
-              <input type="checkbox" value="true" name="aggreePersonalData" ng-model="agree"> Zgoda na przetwarzanie danych osobowych
+              <input type="checkbox" value="true" name="aggreePersonalData" ng-model="agree">Zgoda na przetwarzanie danych osobowych
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" value="true" name="aggreeCommercials" ng-model="agree"> Zgoda na otrzymywanie materiałów reklamowych
+              <input type="checkbox" value="true" name="aggreeCommercials" ng-model="agree">Zgoda na otrzymywanie materiałów reklamowych
             </label>
           </div>
         </div>

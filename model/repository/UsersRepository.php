@@ -12,4 +12,6 @@ interface UsersRepository {
 
 	public function insertNewUser($user);
 
+	public function setPassword($email, $password);
+
 }

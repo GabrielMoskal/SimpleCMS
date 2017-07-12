@@ -58,14 +58,26 @@ class LoginController {
 		$this->viewResolver->view('index');
 	}
 
-	// shows page responsible for reminding password
+	/** 
+	Redirects to the page_forgotpwd.php 
+	*/
 	public function showForgotPassword() {
 		return $this->viewResolver->view('page_forgotpwd');
 	}
 
-	// TODO
+	/**
+	Retrieves email from $_POST, tries to reset password
+	and sends email on success.
+	If success, returns to index page, else returns to page_forgotpwd page.
+	*/
 	public function processForgotPassword() {
+		$email = $_POST['email'];
 
+		if ($this->loginService->resetPassword($email)) {
+			return $this->viewResolver->view('index');
+		} else {
+			return $this->viewResolver->view('page_forgotpwd', compact('email'));
+		};
 	}
 
 }

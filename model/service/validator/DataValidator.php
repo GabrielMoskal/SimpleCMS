@@ -26,4 +26,15 @@ class DataValidator {
 			return isset($data) || $data !== '';
 		}, $dataArray);
 	}
+
+	/**
+	Checks if email is valid.
+	*/
+	public function isEmailValid(string $email) {
+		if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
