@@ -8,10 +8,10 @@ class UserValidator {
 	Validates email and password given in an User object.
 	*/
 	public function areDetailsValid($user) {
-		$email = $user->getEmail();
+		$email = $user->email;
 		$emailValid = $this->isEmailValid($email);
 
-		$password = $user->getPassword();
+		$password = $user->password;
 		$passwordValid = $this->isPasswordValid($password);
 
 		return $emailValid && $passwordValid;

@@ -30,9 +30,9 @@ class RegistrationController {
 		$user = $this->createUser();
 
 		if ($this->registrationService->register($user)) {
-			return $this->viewResolver->view('index');
+			//return $this->viewResolver->view('index');
 		} else {
-			return $this->viewResolver->view('page_signup', compact('user'));
+			//return $this->viewResolver->view('page_signup', compact('user'));
 		};
 	}
 

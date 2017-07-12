@@ -43,7 +43,7 @@ class RegistrationService {
 
 
 	private function userExists() {
-		$email = $this->user->getEmail();
+		$email = $this->user->email;
 		return $this->usersRepository->userExists($email);
 	}
 

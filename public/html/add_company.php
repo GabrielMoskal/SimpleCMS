@@ -1,33 +1,16 @@
-<!DOCTYPE html>
-<html lang="en" class="">
-<head>
-  <meta charset="utf-8" />
-  <title>Html version | Angulr</title>
-  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <link rel="stylesheet" href="../public/libs/assets/animate.css/animate.css" type="text/css" />
-  <link rel="stylesheet" href="../public/libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
-  <link rel="stylesheet" href="../public/libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
-  <link rel="stylesheet" href="../public/libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-
-  <link rel="stylesheet" href="../public/html/css/font.css" type="text/css" />
-  <link rel="stylesheet" href="../public/html/css/app.css" type="text/css" />
-
-</head>
-<body>
+<?php require('partials/head.php'); ?>
 
 <?php require('partials/nav.php'); ?>
 
-<div class="app app-header-fixed ">
-  
-
-
+ <!-- content -->
+  <div id="content" class="app-footercontent" role="main">
+  <div class="app-content-body app-content-full">
+              <div class="app app-header-fixed ">
   <!-- content -->
   <div id="content" class="app-content" role="main">
-  	<div class="app-content-body ">
-	    
+    <div class="app-content-body ">
+      
 <div class="wrapper-md" ng-controller="FormDemoCtrl">
-  
   <div class="panel panel-default">
     <div class="panel-heading font-bold">
       <h1>Dane firmy</h1>
@@ -69,14 +52,13 @@
           <div class="col-sm-10">
             <input type="text" class="form-control rounded" name="NIP">                        
           </div>
-        </div><div class="form-group">
+        </div>
+        <div class="form-group">
           <label class="col-sm-2 control-label">Adres e-mail</label>
           <div class="col-sm-10">
             <input type="text" class="form-control rounded" name="email">                        
           </div>
         </div>
-        
-
         <div class="line line-dashed b-b line-lg pull-in"></div>
         <div class="form-group">
           <label class="col-sm-2 control-label">Handlowiec:</label>
@@ -101,7 +83,6 @@
             </div>
           </div>
         </div>
-
         <div class="line line-dashed b-b line-lg pull-in"></div>
         <div class="form-group">
           <label class="col-sm-2 control-label"></label>
@@ -118,10 +99,23 @@
         <button type="submit" class="btn btn-sm btn-primary" name="cancel">Anuluj</button>
         <button type="submit" class="btn btn-sm btn-primary" name="accept">Zapisz zmiany</button>
        </form>
-	</div>
+     </div>
+  </div>
+  </div>
+  </div>
+  </div>
   </div>
   <!-- /content -->
-  
+
+
+</div>
+<!-- /hbox layout -->
+
+  </div>
+  </div>
+  <!-- /content -->
+
+
   <!-- footer -->
   <footer id="footer" class="app-footer" role="footer">
     <div class="wrapper b-t bg-light">
@@ -135,14 +129,4 @@
 
 </div>
 
-<script src="../public/libs/jquery/jquery/dist/jquery.js"></script>
-<script src="../public/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-<script src="../public/html/js/ui-load.js"></script>
-<script src="../public/html/js/ui-jp.config.js"></script>
-<script src="../public/html/js/ui-jp.js"></script>
-<script src="../public/html/js/ui-nav.js"></script>
-<script src="../public/html/js/ui-toggle.js"></script>
-<script src="../public/html/js/ui-client.js"></script>
-
-</body>
-</html>
+<?php require('partials/footer.php'); ?>
