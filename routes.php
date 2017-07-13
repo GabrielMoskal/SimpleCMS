@@ -8,6 +8,8 @@ $router->post('names', 'controllers/add-name.php');
 // CompanyController
 $router->get('addCompany', 'CompanyController@showCompany');
 $router->post('addCompany', 'CompanyController@addCompany');
+$router->get('showCompanies', 'CompanyController@showCompanies');
+$router->post('showCompanies', 'CompanyController@processActionOnCompanies');
 
 // LoginController
 $router->get('login', 'LoginController@showLogin');

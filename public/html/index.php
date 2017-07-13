@@ -7,7 +7,7 @@
 	<?php 
 		if (isset($_SESSION['user'])) {
 			
-			echo "Hello " . $_SESSION['user']->getUsername(); 
+			echo "Hello " . $_SESSION['user']->username; 
 		}
 	?>
 

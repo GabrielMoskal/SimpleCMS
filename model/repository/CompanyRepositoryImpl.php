@@ -57,4 +57,36 @@ class CompanyRepositoryImpl implements CompanyRepository {
 		}, $companies);
 	}
 
+	public function retrieveAllCompanies() {
+		return $this->queryBuilder->selectAll('companies');
+	}
+
+	public function deleteAllCompanies() {
+		$this->queryBuilder->deleteAll('companies');
+	}
+
+	public function selectRestricted($sortBy) {
+		//var_dump($this->queryBuilder->selectRestricted('companies', $sortBy));
+		
+		//$result = $this->queryBuilder->selectRestricted('companies', $sortBy);
+
+	
+		$queryString = "SELECT * FROM companies 
+						WHERE companyName LIKE '%{$sortBy['companyName']}%' AND 
+						trader LIKE '%{$sortBy['trader']}%'";
+
+		if (isset($sortBy['dateFrom']) && (isset($sortBy['dateTo']))) {
+			$queryString = $queryString . " AND creationDate BETWEEN '{$sortBy['dateFrom']}' AND 
+							 '{$sortBy['dateTo']}'";
+		}
+
+		$queryString = $queryString . ";";
+
+		echo($queryString);
+		
+
+
+		return $this->queryBuilder->selectRestricted('companies', $sortBy);
+	}
+
 }

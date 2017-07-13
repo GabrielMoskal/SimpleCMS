@@ -4,10 +4,8 @@
 
   <div id="content" class="app-content" role="main">
   <div class="app-content-body app-content-full">
-              <div class="app app-header-fixed ">
+      <div class="app app-header-fixed ">
   <!-- content -->
-  <div id="content" class="app-content" role="main">
-    <div class="app-content-body ">
 	    
 <div class="wrapper-md" ng-controller="FormDemoCtrl">
   <div class="panel panel-default">

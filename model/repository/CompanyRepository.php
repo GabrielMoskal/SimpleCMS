@@ -10,4 +10,10 @@ interface CompanyRepository {
 
 	public function retrieveCompaniesNames();
 
+	public function retrieveAllCompanies();
+
+	public function deleteAllCompanies();
+
+	public function selectRestricted($sortBy);
+
 }

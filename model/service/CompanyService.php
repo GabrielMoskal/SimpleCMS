@@ -44,6 +44,7 @@ class CompanyService {
 		$company->trader = strip_tags($_POST['trader']);
 		$company->aggreePersonalData = $_POST['aggreePersonalData'];
 		$company->aggreeCommercials = $_POST['aggreeCommercials'];
+		$company->creationDate = date("Y-m-d H:i:s");
 
 		return $company;
 	}
@@ -79,5 +80,17 @@ class CompanyService {
 	*/
 	private function processAddCompany() {
 		$this->companyRepository->insertNewCompany($this->company);
+	}
+
+	public function retrieveAllCompanies() {
+		return $this->companyRepository->retrieveAllCompanies();
+	}
+
+	public function deleteAllCompanies() {
+		$this->companyRepository->deleteAllCompanies();
+	}
+
+	public function sortCompanies($sortBy) {
+		return $this->companyRepository->selectRestricted($sortBy);
 	}
 }

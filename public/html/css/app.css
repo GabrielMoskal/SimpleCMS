@@ -684,6 +684,7 @@ body {
 
 .app-header-fixed {
   padding-top: 50px;
+  padding-right: 50px;
 }
 
 .app-header-fixed .app-header {
@@ -750,6 +751,7 @@ body {
   position: absolute;
   top: 20px;
   bottom: 50px;
+  left: 250px;
   width: auto !important;
   height: auto;
   padding: 0 !important;

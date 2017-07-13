@@ -48,19 +48,52 @@ class CompanyController {
 		};
 	}
 
-	private function createCompanyTest() {
-		$company = new Company();
-		$company->companyName = 'companyName';
-		$company->address = 'address';
-		$company->street = 'street';
-		$company->town = 'town';
-		$company->country = 'country';
-		$company->NIP = 41234;
-		$company->email = 'email';
-		$company->trader = 'trader';
-		$company->aggreePersonalData = 'true';
-		$company->aggreeCommercials = 'false';
+	public function showCompanies() {
+		$companies = $this->companyService->retrieveAllCompanies();
+		return $this->viewResolver->view('show_companies', compact('companies'));
+	}
 
-		return $company;
+	public function processActionOnCompanies() {
+		$action = $_POST['chosenAction'];
+		if ($action == 'deleteAll') {
+			return $this->deleteAllCompanies();
+		} else if ($action = 'sort') {
+			return $this->sortCompanies();
+		}
+	}
+
+	private function deleteAllCompanies() {
+		$this->companyService->deleteAllCompanies();
+		return $this->viewResolver->view('show_companies', compact('companies'));
+	}
+
+	private function sortCompanies() {
+		
+		$sortBy = $this->makeSortingRestrictions();
+
+		$result = $this->companyService->sortCompanies($sortBy);
+
+		//var_dump($result);
+
+	}
+
+	private function makeSortingRestrictions() {
+		$sortBy = [
+			'companyName' => $_POST['companyName'],
+			// 'phoneNumber' => $_POST['phoneNumber'],
+			//'dateFrom' => $_POST['dateFrom'],
+			//'dateTo' => $_POST['dateTo'],
+			'trader' => $_POST['trader']
+		];
+
+		$sortBy = array_filter(
+			$sortBy, 
+			function($data) {
+				if ($data !== '') {
+					return true;
+				} 
+				return false;
+		});
+		return $sortBy;
 	}
 }

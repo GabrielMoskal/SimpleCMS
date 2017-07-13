@@ -17,5 +17,5 @@ class Company {
 	public $trader;
 	public $aggreePersonalData;
 	public $aggreeCommercials;
-
+	public $creationDate;
 }

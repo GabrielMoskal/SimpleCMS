@@ -32,6 +32,34 @@ class QueryBuilder {
 		}
 	}
 
+	public function deleteAll($table) {
+		$queryString = "DELETE FROM {$table} WHERE 1;";
+
+		try {
+			$statement = $this->pdo->prepare($queryString);
+			$statement->execute();
+		} catch(PDOException $e) {
+			die('Whoops, something went wrong');
+		}
+	}
+
+	public function selectRestricted($table, $parameters) {
+		$queryString = sprintf(
+			'SELECT * FROM %s WHERE %s LIKE %s;',
+			$table,
+			implode(', ', array_keys($parameters)),
+			':' . implode(', :', array_keys($parameters))
+		);
+
+		try {
+			$statement = $this->pdo->prepare($queryString);
+			$statement->execute($parameters);
+			return $statement->fetchAll(PDO::FETCH_CLASS);
+		} catch(PDOException $e) {
+			die('Whoops, something went wrong');
+		}
+	}
+
 	public function getPDO() {
 		return $this->pdo;
 	}

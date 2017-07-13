@@ -34,6 +34,9 @@
                   <li>
                     <a href="/addQuestion"><span>Dodaj pytanie</span></a>
                   </li>
+                  <li>
+                    <a href="/showCompanies"><span>Pokaż firmy</span></a>
+                  </li>
             </ul>
           </nav>
           <!-- nav -->
