@@ -23,4 +23,8 @@ class PagesController {
 	public function contact() {
 		return $this->viewResolver->view('contact');
 	}
+
+	public function pageNotFound() {
+		return $this->viewResolver->view('page_404');
+	}
 }

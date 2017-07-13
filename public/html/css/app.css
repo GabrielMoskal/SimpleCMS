@@ -748,12 +748,11 @@ body {
 
 .app-content-full {
   position: absolute;
-  top: 50px;
+  top: 20px;
   bottom: 50px;
   width: auto !important;
   height: auto;
   padding: 0 !important;
-  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
