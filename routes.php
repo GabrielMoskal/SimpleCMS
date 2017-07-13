@@ -24,5 +24,9 @@ $router->post('register', 'RegistrationController@processRegistration');
 $router->get('addContact', 'ContactController@showAddContact');
 $router->post('addContact', 'ContactController@addContact');
 
-// PageNotFount
+// PageNotFound
 $router->get('pageNotFound', 'PagesController@pageNotFound');
+
+// QuestionController
+$router->get('addQuestion', 'QuestionController@showAddQuestion');
+$router->post('addQuestion', 'QuestionController@addQuestion');

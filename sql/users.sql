@@ -1,4 +1,4 @@
-DROP TABLE simplecms.users;
+DROP TABLE IF EXISTS simplecms.users;
 
 CREATE TABLE simplecms.users (
 	username VARCHAR(15) PRIMARY KEY,

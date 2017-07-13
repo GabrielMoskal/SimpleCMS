@@ -31,6 +31,9 @@
                       <a href="/register"><span>Zarejestruj</span></a>
                     </li>
                   <?php endif; ?>
+                  <li>
+                    <a href="/addQuestion"><span>Dodaj pytanie</span></a>
+                  </li>
             </ul>
           </nav>
           <!-- nav -->

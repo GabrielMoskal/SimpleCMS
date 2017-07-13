@@ -2,7 +2,7 @@
 
 namespace App\Model\Repository;
 
-class ContactRepositoryImpl implements ContactRepository {
+class QuestionRepositoryImpl implements QuestionRepository {
 
 	private $queryBuilder;
 	private $pdo;
@@ -16,13 +16,12 @@ class ContactRepositoryImpl implements ContactRepository {
 	}
 
 	/**
-		Returns true if Contact exists in database having 
+		Returns true if Question exists in database having 
 		the same email address like $contact->email.
 	*/
-	public function contactExists($contact) {
-		$email = $contact->email;
-		$queryString = "SELECT COUNT(*) FROM contacts 
-						WHERE email='{$email}';";
+	public function questionExists(string $questionValue) {
+		$queryString = "SELECT COUNT(*) FROM questions 
+						WHERE questionValue='{$questionValue}';";
 
 		$numberOfRows = $this->query($queryString);
 		return (int)$numberOfRows != 0;
@@ -42,11 +41,11 @@ class ContactRepositoryImpl implements ContactRepository {
 	}
 
 	/**
-		Inserts Contact object into database.
+		Inserts Question object into database.
 	*/
-	public function insertNewContact($contact) {
-		$contactArray = get_object_vars($contact);
+	public function insertNewQuestion($question) {
+		$questionArray = get_object_vars($question);
 
-		$this->queryBuilder->insert('contacts', $contactArray);
+		$this->queryBuilder->insert('questions', $questionArray);
 	}
 }

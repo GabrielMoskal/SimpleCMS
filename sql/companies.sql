@@ -1,5 +1,6 @@
+DROP TABLE IF EXISTS simplecms.companies;
 
-CREATE TABLE IF NOT EXISTS simplecms.companies
+CREATE TABLE simplecms.companies
 (
 	companyName varchar(50), 
 	address varchar(50), 

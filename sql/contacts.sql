@@ -1,4 +1,4 @@
-DROP TABLE simplecms.contacts;
+DROP TABLE IF EXISTS simplecms.contacts;
 
 CREATE TABLE simplecms.contacts
 (
