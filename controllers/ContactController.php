@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Core\ViewResolver;
 use App\Model\Dto\Contact;
 use App\Model\Service\ContactService;
 use App\Model\Service\CompanyService;

@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Core\ViewResolver;
-use App\Model\Dto\Company;
 use App\Model\Service\CompanyService;
 use App\Model\Repository\CompanyRepositoryImpl;
 

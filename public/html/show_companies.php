@@ -68,18 +68,18 @@
               </td>
           </tr>
 
-          <tr>
-            <?php foreach($companies as $company) : ?>
-              <td>
-                <label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label>
-                <?= $company->id; ?>
-              </td>
-              <td><?= $company->companyName; ?></td>
-              <td>1312421</td>
-              <td><?= $company->creationDate; ?></td>
-              <td><?= $company->trader; ?></td>
-            <?php endforeach; ?>
-          </tr>
+          <?php foreach($companies as $company) : ?>
+              <tr>
+                  <td>
+                      <label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label>
+                      <?= $company->id; ?>
+                  </td>
+                  <td><?= $company->companyName; ?></td>
+                  <td>1312421</td>
+                  <td><?= $company->creationDate; ?></td>
+                  <td><?= $company->trader; ?></td>
+              </tr>
+          <?php endforeach; ?>
           
         </tbody>
       </table>

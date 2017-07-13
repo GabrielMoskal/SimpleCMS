@@ -2,9 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Core\ViewResolver;
 use App\Model\Service\QuestionService;
-use App\Model\Dto\Question;
 use App\Model\Repository\QuestionRepositoryImpl;
 
 class QuestionController {
