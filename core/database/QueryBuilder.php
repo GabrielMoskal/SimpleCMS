@@ -2,6 +2,9 @@
 
 class QueryBuilder {
 
+    /**
+     *   @var PDO
+     */
 	private $pdo;
 
 	public function __construct($pdo) {
@@ -9,7 +12,7 @@ class QueryBuilder {
 	}
 
 	public function selectAll($table) {
-		$statement = $this->pdo->prepare("select * from {$table};");
+		$statement = $this->pdo->prepare("SELECT * FROM {$table};");
 
 		$statement->execute();
 

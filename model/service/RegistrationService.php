@@ -54,19 +54,6 @@ class RegistrationService {
 	}
 
 	/**
-	Returns true if $this->user details and valid and user accepted terms.
-	*/
-	private function areDetailsValid() {
-		return $this->userValidator->areDetailsValid($this->user) && $_POST['agreeTerms'];
-	}
-
-
-	private function userExists() {
-		$email = $this->user->email;
-		return $this->usersRepository->userExists($email);
-	}
-
-	/**
 	Inserts a new user into database using UsersRepository.
 	*/
 	private function processRegistration() {

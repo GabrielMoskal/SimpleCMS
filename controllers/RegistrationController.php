@@ -2,12 +2,16 @@
 
 namespace App\Controllers;
 
+use App\Core\ViewResolver;
 use App\Model\Dto\User;
 use App\Model\Service\RegistrationService;
 use App\Model\Repository\UsersRepositoryImpl;
 
 class RegistrationController {
 
+    /**
+     *   @var ViewResolver
+     */
 	private $viewResolver;
 	private $registrationService;
 

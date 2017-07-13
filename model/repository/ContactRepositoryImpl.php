@@ -33,10 +33,10 @@ class ContactRepositoryImpl implements ContactRepository {
 	*/
 	private function query(string $queryString) {
 		try {
-			$result = $this->pdo->prepare($queryString); 
+			$result = $this->pdo->prepare($queryString);
 			$result->execute();			
 			return $result->fetchColumn(0);			
-		} catch(PDOException $e) {
+		} catch(\PDOException $e) {
 			die($e->getMessage());
 		}
 	}

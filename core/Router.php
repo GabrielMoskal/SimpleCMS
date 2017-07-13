@@ -2,8 +2,6 @@
 
 namespace App\Core;
 
-use App\Controllers\PagesController;
-
 class Router {
 
 	private $authorizationFilter;

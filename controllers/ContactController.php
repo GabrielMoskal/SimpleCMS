@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Core\ViewResolver;
 use App\Model\Dto\Contact;
 use App\Model\Service\ContactService;
 use App\Model\Service\CompanyService;
@@ -10,6 +11,9 @@ use App\Model\Repository\CompanyRepositoryImpl;
 
 class ContactController {
 
+    /**
+     *   @var ViewResolver
+     */
 	private $viewResolver;
 	private $contactService;
 	private $companyService;

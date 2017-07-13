@@ -13,3 +13,8 @@ CREATE TABLE simplecms.contacts
 	aggreeCommercials varchar(50),
 	picture varchar(200)
 );
+
+INSERT INTO simplecms.contacts (companyName, clientName, job, phoneNumber, email,
+                                trader, aggreePersonalData, aggreeCommercials, picture)
+    VALUES ('Google', 'John Smith', 'Driver', '123125421', 'john@smith.com',
+            'Jan Kowalski', 'true', 'true', 'paris.jpg');

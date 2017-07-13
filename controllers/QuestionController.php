@@ -2,11 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Core\ViewResolver;
 use App\Model\Service\QuestionService;
 use App\Model\Repository\QuestionRepositoryImpl;
 
 class QuestionController {
 
+    /**
+     *   @var ViewResolver
+     */
 	private $viewResolver;
 	private $questionService;
 

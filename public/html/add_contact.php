@@ -59,12 +59,11 @@
           </div>
         </div>
 
-      
         <div class="line line-dashed b-b line-lg pull-in"></div>
         <div class="form-group">
           <label class="col-sm-2 control-label">Skan</label>
           <div class="col-sm-10">
-            <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="userImage" accept="image/*">
+            <input ui-jq="filestyle" type="file" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="userImage" accept="image/*">
           </div>
         </div>
 

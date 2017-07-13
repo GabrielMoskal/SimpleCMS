@@ -2,9 +2,13 @@
 
 namespace App\Controllers;
 
+use App\Core\ViewResolver;
 
 class PagesController {
 
+    /**
+     *   @var ViewResolver
+     */
 	private $viewResolver;
 
 	public function __construct($viewResolver) {

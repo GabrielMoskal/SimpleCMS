@@ -2,12 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Core\ViewResolver;
 use App\Model\Service\CompanyService;
 use App\Model\Repository\CompanyRepositoryImpl;
 
 class CompanyController {
 
+    /**
+     *   @var ViewResolver
+     */
 	private $viewResolver;
+    /**
+     *   @var CompanyService
+     */
 	private $companyService;
 
 	/**

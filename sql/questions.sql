@@ -11,3 +11,7 @@ CREATE TABLE simplecms.questions
 	answer3 varchar(200),
 	answer4 varchar(200)
 );
+
+INSERT INTO simplecms.questions(questionValue, category, answerType, answer1, answer2, answer3, answer4)
+		VALUES ('Example question', 'example category', 'answer type',
+						'answer1', 'answer2', 'answer3', 'answer4');
