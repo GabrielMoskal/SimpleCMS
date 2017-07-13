@@ -2,16 +2,18 @@
 
 namespace App\Model\Service;
 
-use App\Model\Service\Validator\UserValidator;
+use App\Model\Service\Validator\{DataValidator, UserValidator};
 
 class RegistrationService {
 
 	private $usersRepository;
 	private $user = NULL;
+	private $dataValidator;
 	private $userValidator;
 
 	public function __construct($usersRepository) {
 		$this->usersRepository = $usersRepository;
+		$this->dataValidator = new DataValidator();
 		$this->userValidator = new UserValidator();
 	}
 	
@@ -25,13 +27,30 @@ class RegistrationService {
 	public function register($user) {
 		$this->user = $user;
 
-		if ($this->userValidator->areDetailsValid($user) && 
-		    (! $this->userExists())) {
+		if ($this->canProcessRegistration()) {
 			$this->processRegistration();
-			return true;	
+			return true;
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	Returns true if all these are true:
+	All details in User object are set.
+	Password validation returned true.
+	Email is valid email.
+	User not exists in database.
+	Otherwise returns false.
+	*/
+	private function canProcessRegistration() {
+		$detailsSet = $this->dataValidator->areDetailsSet($this->user);
+		// TODO write method that checks passwords
+		$passwordValid = $this->userValidator->isPasswordValid($this->user->password);
+		$emailValid = $this->dataValidator->isEmailValid($this->user->email);
+		$userExists = $this->usersRepository->userExists($this->user->email);
+
+		return $detailsSet && $passwordValid && $emailValid && (! $userExists);
 	}
 
 	/**

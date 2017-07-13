@@ -14,25 +14,23 @@
                     </a>
                   </li>
                   <?php if (isset($_SESSION['user'])) : ?>
-                    <li id="menuli"><a href="/logout">Wyloguj</a></li>
+                    <li id="menuli">
+                      <a href="/logout">Wyloguj</a>
+                    </li>
+                    <li>
+                      <a href="/addCompany"><span>Dodaj firmę</span></a>
+                    </li>
+                    <li>
+                    <a href="/addContact"><span>Dodaj kontakt</span></a>
+                    </li>
                   <?php else : ?>
-                    <li id="menuli"><a href="/login">Zaloguj</a></li>
+                    <li id="menuli">
+                      <a href="/login">Zaloguj</a>
+                    </li>
+                    <li>
+                      <a href="/register"><span>Zarejestruj</span></a>
+                    </li>
                   <?php endif; ?>
-                  <li>
-                    <a href="/register">
-                      <span>Zarejestruj</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/addCompany">
-                      <span>Dodaj firmę</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/addContact">
-                      <span>Dodaj kontakt</span>
-                    </a>
-                  </li>
             </ul>
           </nav>
           <!-- nav -->

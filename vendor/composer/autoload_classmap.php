@@ -31,6 +31,7 @@ return array(
     'App\\Model\\Service\\Validator\\DataValidator' => $baseDir . '/model/service/validator/DataValidator.php',
     'App\\Model\\Service\\Validator\\FormValidator' => $baseDir . '/model/service/validator/FormValidator.php',
     'App\\Model\\Service\\Validator\\UserValidator' => $baseDir . '/model/service/validator/UserValidator.php',
+    'AuthorizationFilter' => $baseDir . '/core/AuthorizationFilter.php',
     'ComposerAutoloaderInite84b1596007af5ceb56786cf55a3e8a9' => $vendorDir . '/composer/autoload_real.php',
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
     'Composer\\Autoload\\ComposerStaticInite84b1596007af5ceb56786cf55a3e8a9' => $vendorDir . '/composer/autoload_static.php',

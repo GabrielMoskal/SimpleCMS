@@ -82,7 +82,6 @@ class UsersRepositoryImpl implements UsersRepository {
 	*/
 	public function insertNewUser($user) {
 		$contactArray = get_object_vars($user);
-		var_dump($user)	;
 		$this->queryBuilder->insert('users', $contactArray);
 	}
 

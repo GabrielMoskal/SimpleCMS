@@ -32,6 +32,7 @@ class ComposerStaticInite84b1596007af5ceb56786cf55a3e8a9
         'App\\Model\\Service\\Validator\\DataValidator' => __DIR__ . '/../..' . '/model/service/validator/DataValidator.php',
         'App\\Model\\Service\\Validator\\FormValidator' => __DIR__ . '/../..' . '/model/service/validator/FormValidator.php',
         'App\\Model\\Service\\Validator\\UserValidator' => __DIR__ . '/../..' . '/model/service/validator/UserValidator.php',
+        'AuthorizationFilter' => __DIR__ . '/../..' . '/core/AuthorizationFilter.php',
         'ComposerAutoloaderInite84b1596007af5ceb56786cf55a3e8a9' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInite84b1596007af5ceb56786cf55a3e8a9' => __DIR__ . '/..' . '/composer/autoload_static.php',
